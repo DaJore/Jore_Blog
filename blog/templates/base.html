@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head%}
+    {% endblock%}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="/static/Bootstrap3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/Bootstrap3.3.7/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/image.css"> -->
+    <title>{% block title_base %}Django HomePage{% endblock %}</title>
+</head>
+<body style="background-image: url('/static/picture/bg.jpg');background-repeat: repeat-y;">
+	<div class="container">
+		<div class="row" style="margin-right: -95px;margin-left: -95px;">
+			<div class="col-sm-12 col-xs-12" style="background-image: url('/static/picture/sea.jpg');background-repeat: repeat-y;height: 257px;">
+				<ul class="nav nav-tabs" style="float: left;margin-right: 100px;margin-top: 170px;">
+					<li><a href="{% url 'home' %}"><span style="font-size: 25px;font-weight: normal;color: #0F0F0F;">HOME</span></a></li>
+					<li><a href="{% url 'blog_paging' '1' %}"><span style="font-size: 25px;font-weight: normal;color: #0F0F0F;">BLOG</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" style="background-color: white;margin-left: -95px;margin-right: -95px;padding-top: 10px;">
+			<div class="col-sm-8 col-xs-8">
+					{% block block_base %}
+					{% endblock %}
+			</div>
+			<div class="col-sm-4 col-xs-4">
+				<img class="img-circle" width="45%" src="/static/picture/jason.jpg" style="float:right;padding-top: 10px;">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12">
+						<p style="float: right;font-size: 20px;color: #F00D6C;margin-right: 10px;">
+							Good Good Study!<br>
+							 &nbsp;&nbsp;&nbsp;Day    Day    Up !
+						</p>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12">
+							<br>
+								<form action="/search/" method="get">
+									<button type="submit" class="btn btn-default" style="float: right;font-size: 15px;">
+										<span class="glyphicon glyphicon-search" style="color: red;"></span>
+									</button>
+									<input placeholder="Search you want......" type="text" name="kw" style="float: right;margin-right: 8px;margin-top: 0px;height: 38px;">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% block paging %}
+		{% endblock %}
+		<div class="row" style="background-color: white;margin-left: -95px;margin-right: -95px;">
+			<div class="col-sm-12 col-xs-12">
+				<p style="text-align: center;">Copyright &copy; 2016-2017 Powered By  Django  All Rights Reserved </p>
+				<p style="color: red;text-align: center;"> Designed By Qiao</p>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

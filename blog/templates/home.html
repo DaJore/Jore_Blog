@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title_base %}Blog{% endblock %}
+{% block block_base %}
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<h4 style="color: red;">最近更新>>:</h4>
+		</div>
+	</div>
+	{% for update in update_list %}
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<a href="{% url 'detail' update.id %}" style="margin-left: 160px;font-size: 35px;color: #ff7500;">
+					{{ update.title }}</a>
+				<div class="row" style="background-color: white;">
+					<div class="col-sm-12 col-xs-12">
+						<span class="label label-success" style="margin-left: 150px;font-size: 15px;">{{ update.date }}</span>
+						<span class="label label-info" style="font-size: 15px;">{{ update.tag }}</span><br><br>
+						<div class="row" style="background-color: white;">
+							<div class="col-sm-12 col-xs-12">
+								<p class="text-info" style="text-indent: 50px;font-size: 16px;">{{ update.summary }}</p><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

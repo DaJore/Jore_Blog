@@ -1,0 +1,17 @@
+led / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+#Django
+settings.py
+urls.py
+*.log
+
+#PyCharm
+.idea
+*.iml
+*.xml

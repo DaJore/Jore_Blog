@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title_base %} {{ want_show.title }} {% endblock %}
+{% block block_base %}
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<a href="{% url 'detail' want_show.id %}"><p style="text-align: center;font-size: 25px;color: #F00D6C">{{ want_show.title }}</p></a>
+		<span class="label label-success" style="font-size: 16px;margin-left: 350px;">{{ want_show.date }}</span>
+		<span class="label label-info" style="font-size: 16px;">{{ want_show.tag }}</span>
+		<!-- <span class="label label-info">{{ post.id }}</span> -->
+		<br><br>
+		<p class="text-info" style="margin-left: 50px;font-size: 18px;text-indent: 50px;">
+		{% autoescape off %}	<!--使文章内容中的HTML代码执行 (autoescape)-->
+		{{ want_show.content }}
+		{% endautoescape %}
+		</p>
+	</div>
+</div> 
+{% endblock %}

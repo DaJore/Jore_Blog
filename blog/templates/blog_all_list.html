@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title_base %}Jore's Blog{% endblock %}
+{% block block_base %}
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			{% for blog_list in content_list %}
+				<center>
+					<a href="{% url 'detail' blog_list.id %}"><h2>{{ blog_list.title }}</h2></a>
+				</center>
+				<span class="label label-success" style="font-size: 16px;margin-left: 350px;">{{ blog_list.date }}</span>
+				<span class="label label-info" style="font-size: 16px;">{{ blog_list.tag }}</span>	
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block paging %}
+{% if flag == 'yes' %}
+	<div class="row" style="background-color: white;margin-left: -95px;margin-right: -95px;">
+		<div class="col-sm-12 col-xs-12">
+			<ul class="pagination pagination">
+				<li><a href="{% url 'blog_paging' '1' %}" aria-label='start'>&laquo;首页</a></li>
+				{% for p in pages %}
+				{% if p == page %}
+				<li class="active"><a href="{% url 'blog_paging' p %}">{{ p }}</a></li>
+				{% else %}
+				<li><a href="{% url 'blog_paging' p %}">{{ p }}</a></li>
+				{% endif %}
+				{% endfor %}
+				<li><a href="{% url 'blog_paging' end %}" aria-label='end'>末页&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+{% endif %}
+{% endblock %}`

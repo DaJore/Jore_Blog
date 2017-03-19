@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+{% if flag == 'empty' %}
+	<script type="text/javascript">
+		window.location.assign('/blog/')
+	</script>
+{% endif %}
+{% endblock %}
+{% block block_base %}
+{% if geted_blog_num == 0 %}
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<h2>Sorry,未找到相关文章！！{{ kw }}</h2>
+		</div>
+	</div>
+	
+{% else %} 
+{% for it in searched_blogs %}
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<h2>{{ it.title }} {{ kw }}</h2>
+			<h3>{{ kw1 }}</h3>
+		</div>
+	</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
