@@ -1,13 +1,26 @@
 {% extends "base.html" %}
-{% block title_base %} {{ want_show.title }} {% endblock %}
+{% block title_base %} Jore's Blog---{{ want_show.title }} {% endblock %}
+{% block block_jumbotron %}
+	<div class="jumbotron" style="background-color: #f0f0f4;">
+			<div class="container">
+				<h1 style="font-family: Girls;color: #177cb0;text-align: left;">Jore's Blog</h1>
+				<ul class="nav nav-pills" style="float: right;">
+					<li><a href="{% url 'home' %}"><strong style="font-size: ;color: #ff461f;font-family: Girls;">Home</strong></a></li>
+					<li  class="active"><a href="{% url 'blog_paging' '' %}"><strong style="font-size:;color: #ff461f;font-family: Girls; ">Blog</strong></a></li>
+				</ul>
+			</div>
+		</div>
+{% endblock %}
 {% block block_base %}
 <div class="row">
 	<div class="col-xs-12 col-sm-12">
 		<a href="{% url 'detail' want_show.id %}"><p style="text-align: center;font-size: 25px;color: #F00D6C">{{ want_show.title }}</p></a>
-		<span class="label label-success" style="font-size: 16px;margin-left: 350px;">{{ want_show.date }}</span>
-		<span class="label label-info" style="font-size: 16px;">{{ want_show.tag }}</span>
+		<p style="text-align: center">
+			<span class="label label-success">{{ want_show.date }}</span>&nbsp;&nbsp;
+			<span class="label label-info">{{ want_show.tag }}</span>
+		</p>
 		<!-- <span class="label label-info">{{ post.id }}</span> -->
-		<br><br>
+		<br>
 		<p class="text-info" style="margin-left: 50px;font-size: 18px;text-indent: 50px;">
 		{% autoescape off %}	<!--使文章内容中的HTML代码执行 (autoescape)-->
 		{{ want_show.content }}

@@ -53,14 +53,24 @@ def blog_detail(request, a):
     return render(request, "detail.html", {'want_show': want_show})
 
 
-def blog_search(request):                  # blog搜索
-    # if 'kw' in request.GET:
-    kw = request.GET['kw']
-    if kw == '':
-        return render(request, "result.html", {'flag': 'empty'})
-    else:
-        searched_blogs = Article.objects.filter(title__icontains=kw)
-        # return HttpResponse(len(searched_blogs))
-        geted_blog_num = len(searched_blogs)
-        return render(request, 'result.html', {'searched_blogs': searched_blogs,
-                                               'geted_blog_num': geted_blog_num})
+# def blog_search(request):                  # blog搜索
+#     # if 'kw' in request.GET:
+#     kw = request.GET['kw']
+#     if kw == '':
+#         return render(request, "result.html", {'flag': 'empty'})
+#     else:
+#         searched_blogs = Article.objects.filter(title__icontains=kw)
+#         # return HttpResponse(len(searched_blogs))
+#         geted_blog_num = len(searched_blogs)
+#         return render(request, 'result.html', {'searched_blogs': searched_blogs,
+#                                                'geted_blog_num': geted_blog_num})
+
+
+# def test_request(request):                       # 检测request
+#     response = request.META
+#     response.sort()
+#     html = []
+#     for k, v in response:
+#         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+#     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+    # return HttpResponse(response)

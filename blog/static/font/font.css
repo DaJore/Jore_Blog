@@ -1,0 +1,7 @@
+@font-size{
+	font-family:  'Girls';
+	src:url('GirlsHaveManySecrets.eot');
+	src:url('GirlsHaveManySecrets.eot?#iefix')  format('embeded-opentype'),
+		url('GirlsHaveManySecrets.ttf')   format('truetype'),
+		url('GirlsHaveManySecrets.woff')   format('woff');
+}
