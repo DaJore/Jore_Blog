@@ -2,22 +2,29 @@
 {% block title_base %}Blog{% endblock %}
 {% block block_base %}
 	<div class="row">
-		<div class="col-xs-12 col-sm-12">
-			<h4 style="color: red;">最近更新>>:</h4>
+		<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+			<h4 style="color: #2aff9f;">最近更新>>:</h4>
 		</div>
+		<!--<div class="col-xs-8 col-sm-offset-10 col-md-offset-10 col-lg-offset-10">-->
+			<!--<form action="" method="get">-->
+				<!--<input type="text">Search-->
+			<!--</form>-->
+		<!--</div>-->
 	</div>
+
 	{% for update in update_list %}
 		<div class="row">
-			<div class="col-sm-12 col-xs-12">
-				<a href="{% url 'detail' update.id %}" style="margin-left: 160px;font-size: 35px;color: #ff7500;">
-					{{ update.title }}</a>
-				<div class="row" style="background-color: white;">
-					<div class="col-sm-12 col-xs-12">
-						<span class="label label-success" style="margin-left: 150px;font-size: 15px;">{{ update.date }}</span>
-						<span class="label label-info" style="font-size: 15px;">{{ update.tag }}</span><br><br>
-						<div class="row" style="background-color: white;">
-							<div class="col-sm-12 col-xs-12">
-								<p class="text-info" style="text-indent: 50px;font-size: 16px;">{{ update.summary }}</p><br>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="{% url 'detail' update.id %}" style="color: #2696ff;">
+					<h3>{{ update.title }}</h3></a>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<span class="label label-success" style="margin-left: 28px;">{{ update.date }}</span>
+						&nbsp;&nbsp;
+						<span class="label label-info" style="">{{ update.tag }}</span><br><br>
+						<div class="row">
+							<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+								<p class="text-info" style="text-indent: 50px;">{{ update.content | slice:"150"|safe }}......</p><br>
 							</div>
 						</div>
 					</div>
