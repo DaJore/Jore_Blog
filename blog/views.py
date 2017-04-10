@@ -22,12 +22,16 @@ def home(request):                                         # 网站首页(显示
     return render(request, "home.html", {'update_list': update_list})
 
 
-def getpages():                                          # 计算文章共多少页
-    num = divmod(Article.objects.all().count(), 6)
-    if num[1] != 0:
-        blog_pages = num[0]+1
+def getpages():# 计算文章共多少页
+    object_num = Article.objects.all().count()
+    if object_num == 0:# 当数据库中没有文章时
+        blog_pages = 1
     else:
-        blog_pages = num[0]
+        num = divmod(object_num, 6)
+        if num[1] != 0 or object_num < 6:
+            blog_pages = num[0]+1
+        elif num[1] == 0 and object_num > 6:
+            blog_pages = num[0]
     return blog_pages
 
 
@@ -36,18 +40,23 @@ def blog_paging(request, page):
     pages = [x for x in range(1, getpages()+1)]          # 所有页码列表
     end = pages[-1]
     if page > end:                                       # 当页码超出范围时
-        return render(request, "page_not_exists.html", {})
-    elif getpages() > 1:
-        content_list = Article.objects.all().order_by('-date')[(page - 1) * 6:page * 6]     # 从数据库选出文章
+        return render(request, "page_not_exists.html")
+    elif getpages() > 1:                                 # 文章是否多于6篇
+        if page == end:#最后一页时对剩余的文章如何显示
+            content_list = Article.objects.all().order_by('-date')[(page-1)*6:]
+        else:
+            content_list = Article.objects.all().order_by('-date')[(page - 1) * 6:page * 6]     # 从数据库选出文章
         return render(request, "blog_all_list.html", {'content_list': content_list, 'pages': pages,
                                                       'end': end, 'flag': 'yes', 'page': page})
-    else:
-        content_list = Article.objects.all().order_by('-date')[(page - 1) * 6:page * 6]
+    elif getpages() == 1 and Article.objects.all().count() == 0:# 数据库没有文章
+        return render(request, 'zeroArticle.html')
+    else:#有文章但少于6篇
+        content_list = Article.objects.all().order_by('-date')[(page - 1) * 6:]
         return render(request, "blog_all_list.html", {'content_list': content_list, 'pages': pages,
                                                       'end': end, 'flag': 'no', 'page': page})
 
 
-def blog_detail(request, a):
+def blog_detail(request, a):# 每篇文章详细内容
     mark = int(a)
     want_show = Article.objects.get(id=mark)
     return render(request, "detail.html", {'want_show': want_show})
