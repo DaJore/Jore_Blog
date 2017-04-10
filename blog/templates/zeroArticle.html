@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title_base %}Jore's Blog{% endblock %}
+{% block block_jumbotron %}
+	<div class="jumbotron" style="background-color: #f0f0f4;height: 220px;">
+			<div class="container">
+				<h1 style="font-family: Girls;color: #177cb0;text-align: left;">Jore's Blog</h1>
+				<ul class="nav nav-pills" style="float: right;">
+					<li><a href="{% url 'home' %}"><strong style="font-size: ;color: #ff461f;font-family: Girls;">Home</strong></a></li>
+					<li  class="active"><a href="{% url 'blog_paging' '' %}"><strong style="font-size:;color: #ff461f;font-family: Girls; ">Blog</strong></a></li>
+				</ul>
+			</div>
+		</div>
+{% endblock %}
+{% block block_base %}
+<h3>暂时没有文章！！</h3>
+{% endblock %}
