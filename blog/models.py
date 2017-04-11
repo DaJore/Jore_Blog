@@ -9,7 +9,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100)  # 博客标题
     tag = models.CharField(max_length=50, blank=True)  # 标签，关键词
     date = models.DateField(auto_now_add=True)  # 日期
-    # summary = models.CharField(max_length=200, blank=True)  # 摘要
+    summary = models.CharField(max_length=200, blank=True)  # 摘要
     # content = models.TextField(blank=True, null=True)  # 正文
     content = UEditorField('content', height=300, width=1000, default=u'',
                            blank=True, toolbars='full')
