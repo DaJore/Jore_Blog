@@ -12,10 +12,10 @@ class Article(models.Model):
     # summary = models.CharField(max_length=200, blank=True)  # 摘要
     # content = models.TextField(blank=True, null=True)  # 正文
     content = UEditorField('content', height=300, width=1000, default=u'',
-                           blank=True, toolbars='besttome')
+                           blank=True, toolbars='full')
 
-    def __unicode__(self):
-        return self.title
+    # def __unicode__(self):
+    #     return self.title
 
     class Meta:
         ordering = ['-date']
