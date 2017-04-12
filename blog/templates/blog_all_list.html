@@ -20,7 +20,7 @@
 				<span class="label label-info">{{ blog_list.tag }}</span>
 				<div class="row">
 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-						<p class="text-info" style="text-indent: 50px;">{{ blog_list.content | slice:"150"|safe }}......</p><br>
+						<p class="text-info" style="text-indent: 50px;">{{ blog_list.summary }}......</p><br>
 					</div>
 				</div>
 			{% endfor %}
