@@ -1,2 +1,2 @@
 # Jore_Blog
-My first personal blog powerd by Django!!!
+personal blog by Django!
